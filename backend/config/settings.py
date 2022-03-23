@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-#import django_heroku
+import django_heroku
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
-#CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000', 'https://forum-prod-frontend.herokuapp.com']
+# CORS_ALLOWED_ORIGINS = ['http://localhost:3000', 'http://127.0.0.1:3000', 'https://frontend-electric-views.herokuapp.com']
 
 # Application definition
 
@@ -46,6 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'apps.posts',
+    'apps.users',
+    'apps.carts',
+    'apps.orders',
+    'apps.items',
     'cloudinary',
     'django_filters',
 ]
@@ -87,27 +91,27 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 # Heroku Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'delm77iva37tje',
-        'USER': 'aiefjhwwsyoman',
-        'PORT': 5432,
-        'HOST': 'ec2-34-231-183-74.compute-1.amazonaws.com',
-        'PASSWORD': '009e6df5fcdd7ba4431962351de536a7328fc86df12fa584d282d6dbaeec4a48',
-    }
-}
-
-# Local Database
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'd76f90457b589h',
+#         'USER': 'jrpgihftvxauxx',
+#         'PORT': 5432,
+#         'HOST': 'ec2-44-194-101-60.compute-1.amazonaws.com',
+#         'PASSWORD': '85347b8d91036ce778c53792be164a85d1b275ad0e17f8c9d06ef2bf7363d28d',
 #     }
 # }
 
+# Local Database
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
 # Heroku PostgreSQL Database
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
 
 
 # Password validation
@@ -155,14 +159,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 cloudinary.config(
-    cloud_name="techis",
-    api_key="886187759951178",
-    api_secret="WGcWrWfkPlxdOCdlFaLTdjSNtfo",
+    cloud_name="dxojr0ldl",
+    api_key="276371358469814",
+    api_secret="0lgzHMgdVbMsaYY8itJ2q3Svjgg",
     secure=True
 )
 
 REST_FRAMEWORK = {
-    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }

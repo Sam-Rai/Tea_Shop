@@ -26,7 +26,7 @@ export default function Header() {
       <section class="header-box">
         <a href="/">
           <div class="header">
-            <span class="views">Tea Shop</span>
+            <span class="views">TR Tea Shop</span>
           </div>
         </a>
         <div class="header-links">
